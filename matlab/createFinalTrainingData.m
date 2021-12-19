@@ -1,4 +1,4 @@
-function getAndShuffleCsvData(folderName)
+function createFinalTrainingData(folderName)
     files = dir(folderName);
     n = {files.name};
     

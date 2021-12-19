@@ -1,4 +1,4 @@
-function [mat] = getImagesToCsv(number, target, fileName)
+function [mat] = createTrainingImagesToCsv(number, target, fileName)
     mat = [];
     vid=videoinput('winvideo');
     vid.TriggerRepeat = 100;

@@ -1,4 +1,4 @@
-function [net] = getFinalCsvData(fileName)
+function [net] = trainModel(fileName)
     rawData = csvread(fileName,0, 0);
     labels = rawData(3265,:);
     targets=dummyvar(labels);

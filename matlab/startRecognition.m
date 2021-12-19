@@ -1,4 +1,4 @@
-function [target] = getImagesToTestNN(net)
+function [target] = startRecognition(net)
     device = serialport("COM5",9600);
     vid=videoinput('winvideo');
     vid.TriggerRepeat = 100;
@@ -12,7 +12,11 @@ function [target] = getImagesToTestNN(net)
         img = getsnapshot(vid);
         img = imcrop(img,[276,214,635,505]);
         img = imresize(img, 0.1,'nearest');
-        img = skin(img);
+
+        grayImg=rgb2gray(im2);
+        level=graythresh(grayImg);
+        img=im2bw(grayImg,level);
+
         vec = img(:);
         target = net(vec);
         [maxValue, maxValueIndex]=max(target);
